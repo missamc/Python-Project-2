@@ -1,0 +1,21 @@
+
+
+title{
+    font-family: Arial, Helvetica, sans-serif;
+    color:blueviolet;
+    font-size: 50px
+}
+
+
+h1 {
+
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:aquamarine;
+    font-size: 30px
+}
+
+p {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:deeppink;
+    font-size: medium;
+}
