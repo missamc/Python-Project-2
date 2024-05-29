@@ -1,6 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, redirect, request
+
+
 
 from cupcakes import get_cupcakes, find_cupcake, add_cupcake_dictionary
+
+
 
 # cupcake = find_cupcake("cupcakes.csv", "")
 
@@ -19,9 +23,14 @@ app = Flask(__name__)
 # def home():
 #     return render_template("index.html")
 
+
+
+     
+
+
 @app.route("/")
 def home():
-    return render_template("index.html", cupcakes = get_cupcakes("cupcakes.csv"))
+    return render_template("index.html")
 
 
 
@@ -35,9 +44,12 @@ def all_cupcakes():
 
 @app.route("/orders")
 def order():
+     Cupcake = request.args.get('cupcake')
+
      return render_template("orders.html")
 
-from flask import Flask, render_template, url_for, redirect
+
+
 
 
 @app.route("/add-cupcake/<name>")
@@ -50,6 +62,11 @@ def add_cupcake(name):
     else:
         return "Sorry cupcake not found."
     
+
+
+
+
+
 
 if __name__ == "__main__":
         app.env = "development"

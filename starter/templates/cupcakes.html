@@ -1,4 +1,7 @@
 
+{% extends "index.html%"}
+{%block content%}
+
 {% for cupcake in cupcakes %}
     <h3>{{ cupcake["name"] }}</h3>
     <h4>Flavor: {{ cupcake["flavor"] }}</h4>
@@ -7,4 +10,9 @@
     <a href="{{ url_for('add_cupcake', name=cupcake['name']) }}">
         <button>Add to Cart</button>
     </a>
+
+    {%endblock%}
+    
 {% endfor %}
+
+
