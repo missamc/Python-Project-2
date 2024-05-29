@@ -137,17 +137,7 @@ def read_csv (file):
 read_csv("sample.csv")
 
 
-cute_cupcake1 = Regular("Stars and Hearts", 2.99, "Vanilla", "Strawberry", "Ganache")
-cute_cupcake1.add_sprinkles("Purple", "Pink", "Blue")
-cute_cupcake2 = Mini("Heath Bar", .99, "Chocolate", "Reeses")
-cute_cupcake2.add_sprinkles("White Chocolate Chips")
-cute_cupcake3 = Large("Red Velvet", 3.99, "Vanilla", "Cream Cheese", None)
 
-cupcake_list = [
-     cute_cupcake1,
-     cute_cupcake2,
-     cute_cupcake3
-]
 
 def write_new_csv(file, cupcakes):
      with open(file, "w", newline = "\n") as csvfile:
@@ -162,7 +152,7 @@ def write_new_csv(file, cupcakes):
             else:
                  writer.writerow({"size": cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "sprinkles": cupcake.sprinkles})
 
-write_new_csv("sample.csv", cupcake_list)
+# write_new_csv("sample.csv", cupcake_list)
 
 
 def add_another_cupcake(file, cupcake):
@@ -196,7 +186,7 @@ class Cupcake(ABC):
             for sprinkle in args:
                  self.sprinkles.append(sprinkle)
 
-    @abstractmethod
+#     @abstractmethod
     def calculate_price(self, quantity):
         return quantity * self.price
 
@@ -225,6 +215,9 @@ class Mini(Cupcake):
         self.frosting = frosting
         self.sprinkles = []
 
+    def calculate_price(self, quantity):
+        return quantity * self.price
+
 my_cupcake_mini = Mini("Chocolate", 1.99, "Chocolate", "White")
 
 print(my_cupcake_mini.name)
@@ -232,7 +225,17 @@ print(my_cupcake_mini.price)
 print(my_cupcake_mini.size)  
 
 
+cute_cupcake1 = Cupcake("Stars and Hearts", 2.99, "Vanilla", "Strawberry", "Ganache")
+cute_cupcake1.add_sprinkles("Purple", "Pink", "Blue")
+cute_cupcake2 = Mini("Heath Bar", .99, "Chocolate", "Reeses")
+cute_cupcake2.add_sprinkles("White Chocolate Chips")
+# cute_cupcake3 = Large("Red Velvet", 3.99, "Vanilla", "Cream Cheese", None)
 
+cupcake_list = [
+     cute_cupcake1,
+     cute_cupcake2,
+     # cute_cupcake3
+]
 
 
 
@@ -242,7 +245,7 @@ print(my_cupcake_mini.size)
 
 def find_cupcake(file, name):
     for cupcake in get_cupcakes(file):
-        if cupcake["name"] == name:
+        if cupcake['name'] == name:
             return cupcake
     return None
 
