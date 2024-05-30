@@ -36,17 +36,22 @@ def home():
 
 @app.route("/cupcakes")
 def all_cupcakes():
-     return render_template("cupcakes.html")
+     return render_template("cupcakes.html", cupcakes=all_cupcakes)
 
 # @app.route("/cupcake_individual")
 # def individual_cupcake():
 #      return render_template("individual-cupcake.html")
 
-@app.route("/orders")
+@app.route("/orders", methods=['POST'])
 def order():
-     Cupcake = request.args.get('cupcake')
+    #  Cupcake = request.args.get('cupcake')
+    name = request.form.get('cupcake')
 
-     return render_template("orders.html")
+    cupcake=find_cupcake('cupcakes.csv', name)
+    print(cupcake)
+    print(name)
+
+    return render_template("orders.html", cupcake=cupcake)
 
 
 

@@ -1,6 +1,7 @@
 
-{% extends "index.html%"}
-{%block content%}
+{% extends "index.html" %}
+
+{% block content%}
 
 {% for cupcake in cupcakes %}
     <h3>{{ cupcake["name"] }}</h3>
@@ -11,8 +12,8 @@
         <button>Add to Cart</button>
     </a>
 
-    {%endblock%}
-    
+    {% endblock %}
+
 {% endfor %}
 
 

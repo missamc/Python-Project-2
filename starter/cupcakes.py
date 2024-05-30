@@ -185,6 +185,7 @@ class Cupcake(ABC):
     def add_sprinkles(self, *args):
             for sprinkle in args:
                  self.sprinkles.append(sprinkle)
+                 return self.sprinkles
 
 #     @abstractmethod
     def calculate_price(self, quantity):

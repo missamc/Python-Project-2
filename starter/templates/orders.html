@@ -10,13 +10,15 @@
     <a href="{{ url_for('add_cupcake', name=cupcake['name']) }}">
         <button>Add to Cart</button>
     </a>
-
+{% block form %}
 <h1>Place an order:</h1>
 <p> Fill out the form:</p>
-<form action="{{url_for('order_form')}}">
+<!-- <form action="{{url_for('/')}}"> -->
+    <form action="/cupcakes" method="POST">
     <label for="cupcake"> Cupcake:</label>
     <input type="text" name="cupcake">
     <input type="submit" value="Submit Form">
+    <button type="submit">Submit</button>
 </form>
 
 {% endfor %}
