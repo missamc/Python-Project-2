@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+
+
   <link rel="stylesheet"  href="..\static\css\main.css" />
   <title>Cupcake Store</title>
 
@@ -22,18 +27,18 @@
 
 
 <p>Want to place an order?</p>
-<a href="{{url_for('order_form')}}"> Place an order here!</a>
+<a href="{{url_for('orders' )}}"> Place an order here!</a>
 
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{url_for('cupcakes')}}"> Home Page</a>
+  <a class="navbar-brand" href="{{url_for('cupcakes' )}}"> Home Page</a>
 </nav>
 
 
-<a href="{{ url_for('static', )}} "></a>
+<!-- <a href="{{ url_for('static' )}} "></a> -->
 
-
+<!-- <a href="{{ url_for('/' )}} "></a> -->
 
 
 </body>

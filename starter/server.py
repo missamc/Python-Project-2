@@ -30,7 +30,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", cupcakes = get_cupcakes("cupcakes.csv"))
 
 
 
@@ -42,16 +42,19 @@ def all_cupcakes():
 # def individual_cupcake():
 #      return render_template("individual-cupcake.html")
 
-@app.route("/orders", methods=['POST'])
+@app.route("/orders", methods=['POST', 'GET'])
 def order():
+    if request.method == "POST":
+         add_cupcake = request.form["cupcake"]
+         return redirect(url_for("add-cupcake", name=add_cupcake))
     #  Cupcake = request.args.get('cupcake')
-    name = request.form.get('cupcake')
+    # name = request.form.get('cupcake')
 
-    cupcake=find_cupcake('cupcakes.csv', name)
-    print(cupcake)
-    print(name)
-
-    return render_template("orders.html", cupcake=cupcake)
+    # cupcake=find_cupcake('cupcakes.csv', name)
+    # print(cupcake)
+    # print(name)
+    else:
+        return render_template("orders.html", cupcake=get_cupcakes)
 
 
 
