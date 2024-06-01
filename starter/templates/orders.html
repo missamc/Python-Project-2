@@ -1,28 +1,25 @@
 
-{% extends "index.html%"}
-<!-- {%block content%} -->
+{% extends "index.html"%}
 
-{% block form %}
+
+{% block content %}
 
 {% for cupcake in cupcakes %}
     <h3>{{ cupcake["name"] }}</h3>
     <h4>Flavor: {{ cupcake["flavor"] }}</h4>
     <h4>Frosting: {{ cupcake["frosting"] }}</h4>
     <h4><b>Price: ${{ cupcake["price"] }}</b></h4>
-    <a href="{{ url_for('add_cupcake', name=cupcake['name']) }}">
-        <button>Add to Cart</button>
-    </a>
+    <form method="POST" action="{{ url_for('add_cupcake') }}">
+        <input type="hidden" name="cupcake_name" value="{{cupcake['name']}}">
+        <button type="submit">Add to Cart</button>
+    </form>
 
-<h1>Place an order:</h1>
-<p> Fill out the form:</p>
-<form action="{{url_for('orders')}}">
-    <form action="/cupcakes" method="POST">
-    <label for="cupcake"> Cupcake:</label>
-    <input type="text" name="cupcake">
-    <input type="submit" value="Submit Form">
-    <button type="submit">Submit</button>
-</form>
+
 
 {% endfor %}
+
+
+
+
 
 {%endblock%}

@@ -36,14 +36,14 @@ def home():
 
 @app.route("/cupcakes")
 def all_cupcakes():
-     return render_template("cupcakes.html", cupcakes=all_cupcakes)
+     return render_template("cupcakes.html", cupcakes=get_cupcakes("cupcakes.csv"))
 
 # @app.route("/cupcake_individual")
 # def individual_cupcake():
 #      return render_template("individual-cupcake.html")
 
 @app.route("/orders", methods=['POST', 'GET'])
-def order():
+def orders():
     if request.method == "POST":
          add_cupcake = request.form["cupcake"]
          return redirect(url_for("add-cupcake", name=add_cupcake))
@@ -54,21 +54,23 @@ def order():
     # print(cupcake)
     # print(name)
     else:
-        return render_template("orders.html", cupcake=get_cupcakes)
+        return render_template("orders.html", cupcakes=get_cupcakes("cupcakes.csv"))
 
 
 
 
 
-@app.route("/add-cupcake/<name>")
-def add_cupcake(name):
+@app.route("/add-cupcake", methods=["POST"])
+def add_cupcake():
+    print(request.form)
+    name= request.form['cupcake_name']
     cupcake = find_cupcake("cupcakes.csv", name)
 
     if cupcake:
         add_cupcake_dictionary("orders.csv", cupcake)
         return redirect(url_for("home"))
     else:
-        return "Sorry cupcake not found."
+        return "Sorry cupcake not found ", 404
     
 
 
