@@ -60,7 +60,7 @@ def orders():
 
 
 
-@app.route("/add-cupcake", methods=["POST"])
+@app.route("/add-cupcake", methods=["GET"])
 def add_cupcake():
     print(request.form)
     name= request.form['cupcake_name']
